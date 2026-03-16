@@ -77,6 +77,15 @@ public class Robot extends TimedRobot {
     } else {
         m_wristMotor.set(0.0);
     }
+
+    // Reset Logic: Button 9 (R Key) = Back to Home
+    if (m_keyboard.getRawButton(9)) {
+        // Force the sim objects back to their initial constants
+        m_elevatorEncoderSim.setDistance(Constants.kElevatorMinimumLength);
+        
+        // Assuming 0.0V is your 'Home' position for the potentiometer
+        m_wristPotSim.setVoltage(0.0); 
+    }
   }
 
   @Override
